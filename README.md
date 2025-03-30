@@ -21,7 +21,7 @@ git clone <repository-url>
 cd <project-directory>
 
 
-###2. Build and Start Containers
+### 2. Build and Start Containers
 Run the following command to build and start all the services defined in the docker-compose.yml file:
 
 docker compose up -d --build
@@ -32,13 +32,13 @@ Builds the Docker images for each service.
 
 Starts the containers in detached mode (-d), meaning it runs in the background.
 
-###3. Check Container Status
+### 3. Check Container Status
 After running the command, you can verify that all containers are running using the following command:
 
 docker compose ps
 This will show a list of running containers.
 
-###4. Access the Application
+### 4. Access the Application
 The web server will be available at http://localhost:8080.
 
 
