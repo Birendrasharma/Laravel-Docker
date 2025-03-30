@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: task-management
+    volumes:
+      - .:/var/www/html
+    networks:
+      - task-management-network
+    depends_on:
+      - db
+  
+  webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    container_name: task-management-webserver
+    environment:
+      PHP_UPSTREAM_CONTAINER: task-management
+      PHP_UPSTREAM_PORT: 9000
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8080:80"
+    networks:
+      - task-management-network
+    depends_on:
+      - app
+      
+
+  db: 
+    image: mariadb:10.6
+    container_name: tm_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: task_management
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - task-management-network
+    ports:
+      - "3307:3306"
+
+networks:
+  task-management-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local
