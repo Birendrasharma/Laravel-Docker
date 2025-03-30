@@ -17,14 +17,14 @@ Follow these steps to set up and run the project using Docker Compose:
 
 Clone the project repository to your local machine:
 
-git clone <repository-url>
-cd <project-directory>
+    git clone https://github.com/Birendrasharma/Laravel-Docker.git
+    cd Laravel-Docker
 
 
 ### 2. Build and Start Containers
 Run the following command to build and start all the services defined in the docker-compose.yml file:
 
-docker compose up -d --build
+     docker compose up -d --build
 
 This command does the following:
 
@@ -35,7 +35,7 @@ Starts the containers in detached mode (-d), meaning it runs in the background.
 ### 3. Check Container Status
 After running the command, you can verify that all containers are running using the following command:
 
-docker compose ps
+    docker compose ps
 This will show a list of running containers.
 
 ### 4. Access the Application
